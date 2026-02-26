@@ -1,17 +1,92 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #101622;
-    color: white;
-    font-family: Inter, system-ui ,Arial, sans-serif;
+body {
+  background-color: #0b1220;
+  color: white;
+  font-family: Inter, system-ui, Arial, sans-serif;
 }
 
-.container{
-    max-width: 1200px;
-    margin: auto;
-    padding: 20px;
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 24px;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+p {
+  margin: 0;
+}
+
+.title {
+  margin-bottom: 20px;
+}
+
+.status {
+  color: #9ca3af;
+  margin-bottom: 12px;
+}
+
+.error {
+  color: #ef4444;
+  margin-bottom: 12px;
+}
+
+/* ✅ Card Styles */
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111827;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 12px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.card-header img {
+  width: 40px;
+  height: 40px;
+}
+
+.crypto-body {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-body {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.symbol {
+  color: #9ca3af;
+  font-size: 14px;
+}
+
+.price {
+  font-weight: bold;
+}
+
+.change.positive {
+  color: #22c55e;
+}
+
+.change.negative {
+  color: #ef4444;
 }
