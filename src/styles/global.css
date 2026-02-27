@@ -29,6 +29,13 @@ p {
   margin-bottom: 20px;
 }
 
+.white-text{
+  color: white;
+}
+
+.blue-text {
+  color: blue;
+}
 .status {
   color: #9ca3af;
   margin-bottom: 12px;
@@ -37,6 +44,13 @@ p {
 .error {
   color: #ef4444;
   margin-bottom: 12px;
+}
+
+.grid-layout{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  margin-top: 30px;
 }
 
 /* ✅ Card Styles */

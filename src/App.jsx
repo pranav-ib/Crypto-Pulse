@@ -30,15 +30,20 @@ function App() {
   
   return (
     <div className="container">
-      <h1>Crypto Pulse</h1> 
+      <h1>
+        <span className="white-text">Crypto</span>
+        <span className="blue-text">Pulse</span> 
+      </h1> 
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       
-      {!loading && !error &&
-        coins.map((coin) => (
-          <Card key={coin.id} coin={coin} />
-        ))
-      } 
+      <div className="grid-layout">
+        {!loading && !error &&
+          coins.map((coin) => (
+            <Card key={coin.id} coin={coin} />
+          ))
+        } 
+      </div>
     </div>
   );
 }
