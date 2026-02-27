@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  max-width: 900px;
+  /*max-width: 900px;*/
   margin: auto;
   padding: 24px;
 }
@@ -19,6 +19,7 @@ body {
 h1 {
   margin-bottom: 20px;
   font-size: 28px;
+  font-weight: normal;
 }
 
 p {
@@ -51,6 +52,81 @@ p {
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   margin-top: 30px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  
+ 
+  background-color: #0b1220;
+  border-bottom: 1px solid #1f2937;
+ 
+}
+
+.navbar-inner {
+  
+  margin: 0 auto;
+  padding: 12px 24px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.nav-left{
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-item {
+
+  text-decoration: none;
+  color: #64748B;
+  font-weight: 600;
+  font: poppins, system-ui, Arial, sans-serif; 
+}
+
+.nav-item:hover {
+  color: blue;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  justify-content: flex-start;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 20px;
+ /* justify-content: flex-end;*/
+  align-items: center;
+}
+
+.search-container input {
+  width: 240px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  outline: none;
+}
+.profile-avatar {
+  width: 36px;
+  height: 36px;
+  background: blue;
+  text-decoration: none;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
 }
 
 /* ✅ Card Styles */

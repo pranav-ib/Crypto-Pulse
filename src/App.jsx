@@ -1,6 +1,7 @@
 import {  useEffect, useState } from "react";
 import { fetchCryptoData } from "./services/cryptoApi";
 import Card from "./components/Card";
+import Navbar from "./components/Navbar";
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -30,10 +31,7 @@ function App() {
   
   return (
     <div className="container">
-      <h1>
-        <span className="white-text">Crypto</span>
-        <span className="blue-text">Pulse</span> 
-      </h1> 
+      <Navbar />
       {loading && <p>Loading...</p>}
       {error && <p style={{ color: "red" }}>{error}</p>}
       
