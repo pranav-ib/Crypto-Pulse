@@ -9,13 +9,22 @@ function App() {
   const [coins, setCoins] = useState([]);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
-  const [watchlist, setWatchlist] = useState([]);
+  
   const [searchQuery, setSearchQuery] = useState("");
   const [isEditingWatchlist, setIsEditingWatchlist] = useState(false);
   const [showAllAssets, setShowAllAssets] = useState(false);
 
   const searchRef = useRef(null);
 
+  const [watchlist, setWatchlist] = useState(() => {
+    try {
+      const saved = localStorage.getItem("watchlist");
+      return saved ? JSON.parse(saved) : [];
+    } catch {
+      return [];
+    }
+  });
+  
   useEffect(() => {
     loadcoins();
 
