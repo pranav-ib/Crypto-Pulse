@@ -40,7 +40,7 @@ p {
 }
 
 .blue-text {
-  color: blue;
+  color: #135BEC;
   font-size: 24px;
 }
 .status {
@@ -130,7 +130,7 @@ p {
 }
 
 .nav-item:hover {
-  color: blue;
+  color: #135BEC;
 }
 
 .nav-links {
@@ -171,7 +171,7 @@ p {
 .profile-avatar {
   width: 36px;
   height: 36px;
-  background: blue;
+  background: #135BEC;
   text-decoration: none;
   color: white;
   border-radius: 50%;
@@ -255,10 +255,12 @@ p {
 }
 
 .change.positive {
+  
   color: #22c55e;
 }
 
 .change.negative {
+ 
   color: #ef4444;
 }
 

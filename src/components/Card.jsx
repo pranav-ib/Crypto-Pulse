@@ -1,3 +1,6 @@
+import bull from '../assets/bull.svg';
+import bear from '../assets/bear.svg';
+
 function Card({ coin, onToggleWatchlist, isWatchlisted, isEditing }) {
   const isPositive = coin.price_change_percentage_24h >= 0;
 
@@ -25,7 +28,9 @@ function Card({ coin, onToggleWatchlist, isWatchlisted, isEditing }) {
         </p>
 
         <p className={isPositive ? "change positive" : "change negative"}>
-          {isPositive ? "↗" : "↘"}{" "}
+          {isPositive ? 
+            <img src={bull} alt="Bull" className="icon" /> : 
+            <img src={bear} alt="Bear" className="icon" />}{" "}
           {coin.price_change_percentage_24h?.toFixed(2)}%
         </p>
       </div>
