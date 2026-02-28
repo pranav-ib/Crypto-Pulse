@@ -3,7 +3,7 @@ import { fetchCryptoData } from "./services/cryptoApi";
 import Card from "./components/Card";
 import Navbar from "./components/Navbar";
 import ApiWarning from "./components/ApiWarning";
-
+import Watchlist from "./sections/Watchlist";
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -47,7 +47,7 @@ function App() {
   };
 
   const toggleWatchlist = (coin) => {
-    console.log("clicked", coin);
+    //console.log("clicked", coin);
     setWatchlist((prev) => {
       const exists = prev.find((item) => item.id === coin.id);
 
@@ -70,23 +70,14 @@ function App() {
         onClose={() => setError("")}
       />
       
-      <h2 className="section-title">My Watchlist</h2>
-
-      <div className="grid-layout">
-        {watchlist.length === 0 && (
-          <p className="status">No assets in watchlist.</p>
-        )}
-
-        {watchlist.map((coin) => (
-          <Card
-            key={coin.id}
-            coin={coin}
-            onToggleWatchlist={toggleWatchlist}
-            isWatchlisted={true}
-          />
-        ))}
-      </div>
-
+      <Watchlist
+        watchlist={watchlist}
+        toggleWatchlist={toggleWatchlist}
+      />
+      
+      
+      <h2 className="section-title">Market Overview</h2>
+      <p className="section-caption">Real-time data for top performing assets</p>
       <div className="grid-layout">
         {!loading && !error &&
           coins.map((coin) => (
