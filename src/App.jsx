@@ -2,6 +2,8 @@ import {  useEffect, useState } from "react";
 import { fetchCryptoData } from "./services/cryptoApi";
 import Card from "./components/Card";
 import Navbar from "./components/Navbar";
+import ApiWarning from "./components/ApiWarning";
+
 
 function App() {
   const [coins, setCoins] = useState([]);
@@ -37,7 +39,7 @@ function App() {
       const data = await fetchCryptoData();
       setCoins(data);
     }catch (error){
-      setError("Failed to load cryptocurrency data. Please try again later.");
+      setError("Real-time prices may be delayed by up to 30 seconds. Checking connection...");
     }
     finally {
       setLoading(false);
@@ -62,7 +64,11 @@ function App() {
     <div className="container">
       <Navbar />
       {loading && <p>Loading...</p>}
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      
+      <ApiWarning
+        message={error}
+        onClose={() => setError("")}
+      />
       
       <h2 className="section-title">My Watchlist</h2>
 
