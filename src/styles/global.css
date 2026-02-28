@@ -32,10 +32,12 @@ p {
 
 .white-text{
   color: white;
+  font-size: 24px;
 }
 
 .blue-text {
   color: blue;
+  font-size: 24px;
 }
 .status {
   color: #9ca3af;
@@ -91,6 +93,13 @@ p {
   line-height: 1;
 }
 
+.logo-img {
+  height: 28px; 
+  width: auto;
+  display: block;
+  margin-right: 10px;
+}
+
 .navbar-inner {
   
   margin: 0 auto;
@@ -143,6 +152,18 @@ p {
   border-radius: 10px;
   outline: none;
 }
+
+.notification-button {
+  width: 32px;
+  height: 36px;
+  background-color: #1E293B;
+  cursor: pointer;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .profile-avatar {
   width: 36px;
   height: 36px;
