@@ -1,4 +1,5 @@
 import Card from "../components/Card";
+import addCircle from "../assets/addCircle.svg";
 
 function Watchlist({
   watchlist,
@@ -41,7 +42,7 @@ function Watchlist({
           onClick={onAddClick}
           type="button"
         >
-          <div className="watchlist-empty-icon">＋</div>
+          <img src={addCircle} alt="Add icon" className="icon" />
           <p>Add asset to watchlist</p>
         </button>
       </div>

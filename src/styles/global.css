@@ -25,6 +25,10 @@ h1 {
 p {
   margin: 0;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+}
 
 .title {
   margin-bottom: 20px;

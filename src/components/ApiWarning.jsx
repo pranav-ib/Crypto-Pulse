@@ -1,9 +1,11 @@
+import warning from '../assets/warning.svg';
+
 function ApiWarning({ message, onClose }) {
   if (!message) return null;
 
   return (
     <div className="api-warning">
-      <div className="api-warning-icon">!</div>
+      <img src={warning} alt="Warning icon" className="icon" />
 
       <div className="api-warning-content">
         <p className="api-warning-title">API Connection Warning</p>
