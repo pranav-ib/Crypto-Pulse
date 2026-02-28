@@ -1,4 +1,4 @@
-import {  useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { fetchCryptoData } from "./services/cryptoApi";
 import Card from "./components/Card";
 import Navbar from "./components/Navbar";
@@ -7,9 +7,14 @@ import Watchlist from "./sections/Watchlist";
 
 function App() {
   const [coins, setCoins] = useState([]);
-  const [error, setError]  = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [watchlist, setWatchlist] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [isEditingWatchlist, setIsEditingWatchlist] = useState(false);
+  const [showAllAssets, setShowAllAssets] = useState(false);
+
+  const searchRef = useRef(null);
 
   useEffect(() => {
     loadcoins();
@@ -27,30 +32,26 @@ function App() {
     return () => clearInterval(interval);
   }, []);
 
-    useEffect(() => {
-      localStorage.setItem("watchlist", JSON.stringify(watchlist));
-    }, [watchlist]);
-    
+  useEffect(() => {
+    localStorage.setItem("watchlist", JSON.stringify(watchlist));
+  }, [watchlist]);
 
-  const loadcoins = async() => {
+  const loadcoins = async () => {
     try {
       setError("");
       setLoading(true);
       const data = await fetchCryptoData();
       setCoins(data);
-    }catch (error){
+    } catch (error) {
       setError("Real-time prices may be delayed by up to 30 seconds. Checking connection...");
-    }
-    finally {
+    } finally {
       setLoading(false);
     }
   };
 
   const toggleWatchlist = (coin) => {
-    //console.log("clicked", coin);
     setWatchlist((prev) => {
       const exists = prev.find((item) => item.id === coin.id);
-
       if (exists) {
         return prev.filter((item) => item.id !== coin.id);
       } else {
@@ -59,41 +60,71 @@ function App() {
     });
   };
 
+  const filteredCoins = coins.filter((coin) => {
+    const query = searchQuery.trim().toLowerCase();
+    return (
+      coin.name.toLowerCase().includes(query) ||
+      coin.symbol.toLowerCase().includes(query)
+    );
+  });
+
+  const visibleCoins = showAllAssets ? filteredCoins : filteredCoins.slice(0, 8);
 
   return (
     <div className="container">
-      <Navbar />
-      {loading && <p>Loading...</p>}
-      
+      <Navbar onSearch={setSearchQuery} searchRef={searchRef} />
+
       <ApiWarning
         message={error}
         onClose={() => setError("")}
       />
-      
+
       <Watchlist
         watchlist={watchlist}
         toggleWatchlist={toggleWatchlist}
+        onAddClick={() => searchRef.current?.focus()}
+        isEditing={isEditingWatchlist}
+        onToggleEdit={() => setIsEditingWatchlist(prev => !prev)}
       />
-      
-      
-      <h2 className="section-title">Market Overview</h2>
-      <p className="section-caption">Real-time data for top performing assets</p>
+
+      <div className="market-header">
+        <div>
+          <h2 className="section-title">Market Overview</h2>
+          <p className="section-caption">Real-time data for top performing assets</p>
+        </div>
+
+        <button
+          className="all-assets-btn"
+          onClick={() => setShowAllAssets((prev) => !prev)}
+        >
+          All Assets
+        </button>
+      </div>
+
       <div className="grid-layout">
         {!loading && !error &&
-          coins.map((coin) => (
-            <Card 
-              key={coin.id} 
+          visibleCoins.map((coin) => (
+            <Card
+              key={coin.id}
               coin={coin}
               onToggleWatchlist={toggleWatchlist}
               isWatchlisted={watchlist.some(item => item.id === coin.id)}
+              isEditing={false}
             />
           ))
-        } 
+        }
+      </div>
+
+      <div className="view-all-wrapper">
+        <button
+          className="view-all-btn"
+          onClick={() => setShowAllAssets(true)}
+        >
+          View All Cryptocurrencies
+        </button>
       </div>
     </div>
   );
 }
 
 export default App;
-
-

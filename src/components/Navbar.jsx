@@ -1,4 +1,4 @@
-function Navbar() {
+function Navbar({onSearch}) {
     return (
         <nav className="navbar">
             <div className="navbar-inner">
@@ -19,7 +19,12 @@ function Navbar() {
 
                 <div className="nav-actions">
                     <div className="search-container">
-                    <input type="text" placeholder="Search assets..." />
+                    <input 
+                        type="text" 
+                        placeholder="Search assets..." 
+                        onChange={(e) => onSearch(e.target.value)}
+                    />
+                    
                     </div>
                     <div className="notification-bell">🔔</div>
                     <a  href="/profile" className="profile-avatar">JD</a>

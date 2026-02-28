@@ -1,4 +1,4 @@
-function Card({ coin, onToggleWatchlist, isWatchlisted }) {
+function Card({ coin, onToggleWatchlist, isWatchlisted, isEditing }) {
   const isPositive = coin.price_change_percentage_24h >= 0;
 
   return (
@@ -7,10 +7,9 @@ function Card({ coin, onToggleWatchlist, isWatchlisted }) {
         className="watch-btn"
         onClick={() => onToggleWatchlist?.(coin)}
       >
-        {isWatchlisted ? "★" : "☆"}
+        {isEditing ? "✕" : isWatchlisted ? "★" : "☆"}
       </button>
 
-      
       <div className="card-header">
         <img src={coin.image} alt={coin.name} />
 
@@ -20,7 +19,6 @@ function Card({ coin, onToggleWatchlist, isWatchlisted }) {
         </div>
       </div>
 
-      
       <div className="card-body">
         <p className="price">
           ${coin.current_price.toLocaleString()}
