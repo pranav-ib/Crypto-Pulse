@@ -180,3 +180,18 @@ p {
 .change.negative {
   color: #ef4444;
 }
+
+
+.watch-btn {
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.section-title {
+  margin-top: 30px;
+  margin-bottom: 12px;
+  font-size: 20px;
+}

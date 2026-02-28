@@ -1,4 +1,4 @@
-function Card( { coin}) {
+function Card( { coin, onToggleWatchlist, isWatchlisted }) {
     const isPositive = coin.price_change_24h >= 0;
 
     return (
@@ -9,6 +9,12 @@ function Card( { coin}) {
                     <h3>{coin.name}</h3>
                     <p className="symbol"> {coin.symbol.toUpperCase()}</p>
                 </div>
+                <button
+                    className="watch-btn"
+                    onClick={() => onToggleWatchlist?.(coin)}
+                    >
+                    {isWatchlisted ? "★" : "☆"}
+                </button>
             </div>
 
             <div className="crypto-body">
