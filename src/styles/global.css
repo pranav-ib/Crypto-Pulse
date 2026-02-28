@@ -50,9 +50,12 @@ p {
 .grid-layout{
   display: grid;
   gap: 20px;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   margin-top: 30px;
+  justify-content: start;
 }
+
+
 
 .navbar {
   position: sticky;
@@ -132,45 +135,74 @@ p {
 /* ✅ Card Styles */
 
 .card {
+  position: relative;
+  background: #1A2233;
+  border-radius: 20px;
+  padding: 24px;
+  min-height: 200px;
+  max-width: 360px;
+
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #111827;
-  padding: 16px;
-  border-radius: 12px;
-  margin-bottom: 12px;
+  flex-direction: column;
 }
 
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+}
+
+/* ⭐ watch button */
+
+.watch-btn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  background: transparent;
+  border: none;
+  color: #3b82f6;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* HEADER */
 .card-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
 }
 
 .card-header img {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
 }
 
-.crypto-body {
-  display: flex;
-  gap: 12px;
-  align-items: center;
+.coin-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
 }
 
+/* BODY */
 .card-body {
+  flex: 1;                
   display: flex;
-  gap: 12px;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
 }
+
+.price {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
 
 .symbol {
   color: #9ca3af;
   font-size: 14px;
-}
-
-.price {
-  font-weight: bold;
 }
 
 .change.positive {
@@ -186,7 +218,7 @@ p {
   background: transparent;
   border: none;
   color: #3b82f6;
-  font-size: 18px;
+  font-size: 28px;
   cursor: pointer;
 }
 
