@@ -1,6 +1,6 @@
 # CryptoPulse – Crypto Market Dashboard
 
-A responsive cryptocurrency market dashboard built with React and Vite. This project converts a Figma design into a fully functional frontend application that displays real-time crypto prices, supports search, and allows users to manage a personalized watchlist.
+CryptoPulse is a responsive cryptocurrency dashboard that enables users to monitor real-time market prices, quickly search assets, and maintain a personalized watchlist. The application is built with React and Vite for a fast and modern user experience.
 
 ---
 
