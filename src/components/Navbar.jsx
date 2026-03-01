@@ -1,7 +1,16 @@
+import { useState } from "react";
 import logo from "../assets/logo.svg";
 import notify from "../assets/notify.svg";
+import search from "../assets/search.svg";
 
 function Navbar({ onSearch }) {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  const handleSearch = (e) => {
+    onSearch(e.target.value);
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-inner">
@@ -26,15 +35,58 @@ function Navbar({ onSearch }) {
             <input
               type="text"
               placeholder="Search assets..."
-              onChange={(e) => onSearch(e.target.value)}
+              onChange={handleSearch}
             />
           </div>
-        <div className="notification-button">
-          <img src={notify} alt="Notification bell" className="notification-bell" />
-        </div>
+          <div className="notification-button">
+            <img src={notify} alt="Notification bell" className="notification-bell" />
+          </div>
           <a href="/profile" className="profile-avatar">JD</a>
         </div>
+
+        {/* Mobile Controls Wrapper */}
+        <div className="mobile-controls">
+          <button 
+            className="mobile-search-btn"
+            onClick={() => setSearchOpen(!searchOpen)}
+            aria-label="Search"
+          >
+            <img src={search} alt="Search" className="search-icon" />
+          </button>
+
+          <button
+            className="hamburger-menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Menu"
+          >
+            <span className={`hamburger-line ${mobileMenuOpen ? "active" : ""}`}></span>
+            <span className={`hamburger-line ${mobileMenuOpen ? "active" : ""}`}></span>
+            <span className={`hamburger-line ${mobileMenuOpen ? "active" : ""}`}></span>
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu Popup */}
+      {mobileMenuOpen && (
+        <div className="mobile-menu">
+          <a href="#market" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>Market</a>
+          <a href="#portfolio" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>Portfolio</a>
+          <a href="#exchange" className="mobile-nav-item" onClick={() => setMobileMenuOpen(false)}>Exchange</a>
+          <a href="/profile" className="mobile-nav-item profile" onClick={() => setMobileMenuOpen(false)}>Profile</a>
+        </div>
+      )}
+
+      {/* Mobile Search Popup */}
+      {searchOpen && (
+        <div className="mobile-search-popup">
+          <input
+            type="text"
+            placeholder="Search assets..."
+            onChange={handleSearch}
+            autoFocus
+          />
+        </div>
+      )}
     </nav>
   );
 }
